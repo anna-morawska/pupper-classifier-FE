@@ -1,5 +1,9 @@
 import React, { FC, useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import { ResponsivePie, PieDatum, PieDatumWithColor } from "@nivo/pie";
+
+import { IStore } from "../../store/reducers/rootReducer";
+
 import styles from "./Chart.module.scss";
 
 interface IChart {
@@ -16,6 +20,8 @@ const colors = [
 
 const Chart: FC<IChart> = ({ data }) => {
   const [chartData, setChartData] = useState<PieDatumWithColor[]>([]);
+  const loading = useSelector((state: IStore) => state.loading);
+  const error = useSelector((state: IStore) => state.error);
 
   useEffect(() => {
     const chartData = data.map((dogStat, index) => ({
@@ -27,6 +33,13 @@ const Chart: FC<IChart> = ({ data }) => {
 
   return (
     <div className={styles.chartWrapper}>
+      <div className={styles.loading}>
+        {loading === true
+          ? "Loading..."
+          : error
+          ? "Upss, something went wrong :("
+          : " "}
+      </div>
       <ResponsivePie
         data={chartData}
         margin={{ top: 40, right: 80, bottom: 80, left: 80 }}

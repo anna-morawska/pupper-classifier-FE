@@ -32,6 +32,10 @@
   background: #fff;
 }
 
+.wrap {
+  display: inline-block;
+}
+
 .corgi_wrap {
   display: flex;
   justify-content: space-between;

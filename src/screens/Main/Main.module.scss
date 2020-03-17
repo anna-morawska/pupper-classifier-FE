@@ -4,12 +4,18 @@
   padding: 2rem 1rem;
 }
 
+.loading {
+  text-align: center;
+  font-size: 1.2rem;
+}
+
 .main {
   margin-top: 0rem;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
+  margin-top: 3rem;
 }
 
 .header {

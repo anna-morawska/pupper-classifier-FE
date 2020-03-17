@@ -34,18 +34,14 @@ const data = [
 ];
 
 const Main: React.FC = () => {
-  const loading = useSelector((state: IStore) => state.loading);
-  const error = useSelector((state: IStore) => state.error);
   const fetchedData = useSelector((state: IStore) => state.data);
 
   return (
     <div className={styles.wrapper}>
       <header className={styles.header}>
         <h1>
-          <span role="img" aria-label="dog">
-            🐶
-          </span>{" "}
           Pupper classifier
+          <Corgi />
         </h1>
         <p>
           Use pre-trained image classification model to detect the breed of your
@@ -56,15 +52,6 @@ const Main: React.FC = () => {
         <Polaroid />
         <Chart data={fetchedData.length === 0 ? data : fetchedData} />
       </main>
-      <Corgi
-        text={
-          loading
-            ? "Loading..."
-            : error
-            ? "Upss, something went wrong :("
-            : "Woof"
-        }
-      />
     </div>
   );
 };

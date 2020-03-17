@@ -1,11 +1,9 @@
 import React, { FC } from "react";
 import "./Corgi.css";
 
-interface PropsFile {
-  text: string;
-}
+interface PropsFile {}
 
-const Corgi: FC<PropsFile> = ({ text }) => {
+const Corgi: FC<PropsFile> = ({}) => {
   return (
     <div className="wrap">
       <div className="resize" id="corgi_wrap">
@@ -35,7 +33,6 @@ const Corgi: FC<PropsFile> = ({ text }) => {
           </div>
         </div>
       </div>
-      <div className="note">{text}</div>
     </div>
   );
 };
