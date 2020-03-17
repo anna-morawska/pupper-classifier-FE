@@ -38,8 +38,6 @@ const Main: React.FC = () => {
   const error = useSelector((state: IStore) => state.error);
   const fetchedData = useSelector((state: IStore) => state.data);
 
-  console.log(fetchedData);
-
   return (
     <div className={styles.wrapper}>
       <header className={styles.header}>
