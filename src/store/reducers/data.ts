@@ -1,7 +1,8 @@
-import { IData, IFetchDataAction } from "../actions/data";
+import { IFetchDataAction } from "../actions/data";
 import { ActionTypes } from "../types";
+import { PieDatum } from "@nivo/pie";
 
-export type TDataState = IData[];
+export type TDataState = PieDatum[];
 
 const dataReducer = (state: TDataState = [], action: IFetchDataAction) => {
   switch (action.type) {

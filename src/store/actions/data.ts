@@ -3,12 +3,13 @@ import { api } from "../../utils/utils";
 import { ActionTypes } from "../types";
 import { errorAction, IErrorAction } from "./error";
 import { loadingAction, ILoadingAction } from "./loading";
+import { PieDatum } from "@nivo/pie";
 
 const URL = "https://jsonplaceholder.typicode.com/todos/1";
 
 export interface IFetchDataAction {
   type: ActionTypes.GET_DATA;
-  payload: IData[];
+  payload: PieDatum[];
 }
 
 export interface IData {
