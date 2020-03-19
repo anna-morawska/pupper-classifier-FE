@@ -5,7 +5,7 @@ import { errorAction, IErrorAction } from "./error";
 import { loadingAction, ILoadingAction } from "./loading";
 import { PieDatum } from "@nivo/pie";
 
-const URL = "http://pupper-classifier.herokuapp.com/upload-image/";
+const URL = "https://pupper-classifier.herokuapp.com/upload-image/";
 
 export interface IFetchDataAction {
   type: ActionTypes.GET_DATA;
