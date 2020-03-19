@@ -31,7 +31,7 @@ const Polaroid: FC = () => {
 
   useEffect(() => {
     if (files[0]) {
-      dispatch(fetchData());
+      dispatch(fetchData(files[0]));
     }
   }, [files, dispatch]);
 

@@ -28,7 +28,7 @@ const Chart: FC<IChart> = ({ data }) => {
       ...dogStat,
       color: colors[index]
     }));
-    setChartData(chartData);
+    setChartData(chartData.slice(0, 5));
   }, [data]);
 
   return (
@@ -42,7 +42,7 @@ const Chart: FC<IChart> = ({ data }) => {
       </div>
       <ResponsivePie
         data={chartData}
-        margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
+        margin={{ top: 40, right: 0, bottom: 80, left: 0 }}
         innerRadius={0.5}
         padAngle={0.7}
         cornerRadius={3}

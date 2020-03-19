@@ -5,7 +5,7 @@ import { errorAction, IErrorAction } from "./error";
 import { loadingAction, ILoadingAction } from "./loading";
 import { PieDatum } from "@nivo/pie";
 
-const URL = "https://jsonplaceholder.typicode.com/todos/1";
+const URL = "http://pupper-classifier.herokuapp.com/upload-image/";
 
 export interface IFetchDataAction {
   type: ActionTypes.GET_DATA;
@@ -13,44 +13,37 @@ export interface IFetchDataAction {
 }
 
 export interface IData {
-  label: string;
-  id: string;
-  value: number;
+  data: {
+    labels: any;
+    values: any;
+  };
 }
 
-export const fetchData = () => async (dispatch: Dispatch) => {
+const transformResponse = (response: IData) => {
+  const { labels, values } = response.data;
+
+  const data = Object.keys(labels).map(key => {
+    const label = labels[key]
+      .split("_")
+      .map(
+        (element: string) => element.charAt(0).toUpperCase() + element.slice(1)
+      )
+      .join(" ");
+
+    const value = +values[key].toFixed(2);
+
+    return { id: label, label, value };
+  });
+
+  return data;
+};
+
+export const fetchData = (file: any) => async (dispatch: Dispatch) => {
   try {
     dispatch<ILoadingAction>(loadingAction(true));
 
-    const response = await api<IData>(URL);
-
-    const data = [
-      {
-        id: "Papillon",
-        label: "Papillon",
-        value: 135
-      },
-      {
-        id: "hack",
-        label: "hack",
-        value: 568
-      },
-      {
-        id: "scala",
-        label: "scala",
-        value: 197
-      },
-      {
-        id: "rust",
-        label: "rust",
-        value: 291
-      },
-      {
-        id: "erlang",
-        label: "erlang",
-        value: 168
-      }
-    ];
+    const response = await api<IData>(URL, file);
+    const data = transformResponse(response);
 
     dispatch<IFetchDataAction>({
       type: ActionTypes.GET_DATA,

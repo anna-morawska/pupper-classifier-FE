@@ -44,12 +44,12 @@
 
 .preview {
   display: block;
-  max-width: 100%;
-  height: auto;
+  min-width: 100%;
+  height: 100%;
 }
 
 .polaroid figcaption {
-  font-size: 1.1em;
+  font-size: 1rem;
   line-height: 1.3em;
   text-align: center;
   height: 3em;

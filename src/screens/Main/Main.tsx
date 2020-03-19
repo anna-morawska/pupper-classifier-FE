@@ -12,23 +12,23 @@ const data = [
     value: 436
   },
   {
-    id: "hack",
-    label: "hack",
+    id: "Pekinese",
+    label: "Pekinese",
     value: 83
   },
   {
-    id: "scala",
-    label: "scala",
+    id: "Shih-tzu",
+    label: "Shih-tzu",
     value: 491
   },
   {
-    id: "rust",
-    label: "rust",
+    id: "Blenheim Spaniel",
+    label: "Blenheim Spaniel",
     value: 29
   },
   {
-    id: "erlang",
-    label: "erlang",
+    id: "Pomeranian",
+    label: "Pomeranian",
     value: 427
   }
 ];

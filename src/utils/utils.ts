@@ -1,12 +1,18 @@
-function api<T>(url: string, type = "JSON"): Promise<T> {
-  return fetch(url).then(response => {
+function api<T>(url: string, data: any): Promise<T> {
+  const formData = new FormData();
+  formData.append("file", data);
+
+  const options = {
+    method: "POST",
+    body: formData
+  };
+
+  return fetch(url, options).then(response => {
     if (!response.ok) {
       throw new Error(response.statusText);
     }
-    if (type === "JSON") {
-      return response.json() as Promise<T>;
-    }
-    return response.text() as Promise<any>;
+
+    return response.json() as Promise<T>;
   });
 }
 
