@@ -1,10 +1,15 @@
 import { IFetchDataAction } from "../actions/data";
 import { ActionTypes } from "../types";
-import { PieDatum } from "@nivo/pie";
 
-export type TDataState = PieDatum[];
+export type TDataState = {
+  categories: string[];
+  data: number[];
+};
 
-const dataReducer = (state: TDataState = [], action: IFetchDataAction) => {
+const dataReducer = (
+  state: TDataState = { categories: [], data: [] },
+  action: IFetchDataAction
+) => {
   switch (action.type) {
     case ActionTypes.GET_DATA:
       return action.payload;

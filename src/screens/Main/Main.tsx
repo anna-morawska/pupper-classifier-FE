@@ -5,33 +5,14 @@ import { IStore } from "../../store/reducers/rootReducer";
 import { Corgi, Polaroid, Chart } from "../../components";
 import styles from "./Main.module.scss";
 
-const data = [
-  {
-    id: "Papillon",
-    label: "Papillon",
-    value: 436
-  },
-  {
-    id: "Pekinese",
-    label: "Pekinese",
-    value: 83
-  },
-  {
-    id: "Shih-tzu",
-    label: "Shih-tzu",
-    value: 491
-  },
-  {
-    id: "Blenheim Spaniel",
-    label: "Blenheim Spaniel",
-    value: 29
-  },
-  {
-    id: "Pomeranian",
-    label: "Pomeranian",
-    value: 427
-  }
+const categories = [
+  "Papillon",
+  "Pekinese",
+  "Shih-tzu",
+  "Blenheim Spaniel",
+  "Pomeranian"
 ];
+const data = [80, 10, 5, 3, 2];
 
 const Main: React.FC = () => {
   const fetchedData = useSelector((state: IStore) => state.data);
@@ -50,7 +31,14 @@ const Main: React.FC = () => {
       </header>
       <main className={styles.main}>
         <Polaroid />
-        <Chart data={fetchedData.length === 0 ? data : fetchedData} />
+        <Chart
+          categories={
+            fetchedData.categories.length !== 0
+              ? fetchedData.categories
+              : categories
+          }
+          data={fetchedData.data.length !== 0 ? fetchedData.data : data}
+        />
       </main>
     </div>
   );

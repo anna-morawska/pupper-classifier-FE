@@ -3,13 +3,15 @@ import { api } from "../../utils/utils";
 import { ActionTypes } from "../types";
 import { errorAction, IErrorAction } from "./error";
 import { loadingAction, ILoadingAction } from "./loading";
-import { PieDatum } from "@nivo/pie";
 
 const URL = "https://pupper-classifier.herokuapp.com/upload-image/";
 
 export interface IFetchDataAction {
   type: ActionTypes.GET_DATA;
-  payload: PieDatum[];
+  payload: {
+    categories: string[];
+    data: number[];
+  };
 }
 
 export interface IData {
@@ -22,20 +24,25 @@ export interface IData {
 const transformResponse = (response: IData) => {
   const { labels, values } = response.data;
 
-  const data = Object.keys(labels).map(key => {
-    const label = labels[key]
-      .split("_")
-      .map(
-        (element: string) => element.charAt(0).toUpperCase() + element.slice(1)
-      )
-      .join(" ");
+  const data = Object.keys(values)
+    .map(key => {
+      return +values[key].toFixed(2);
+    })
+    .slice(0, 5);
 
-    const value = +values[key].toFixed(2);
+  const categories = Object.keys(labels)
+    .map(key => {
+      return labels[key]
+        .split("_")
+        .map(
+          (element: string) =>
+            element.charAt(0).toUpperCase() + element.slice(1)
+        )
+        .join(" ");
+    })
+    .slice(0, 5);
 
-    return { id: label, label, value };
-  });
-
-  return data;
+  return { categories, data };
 };
 
 export const fetchData = (file: any) => async (dispatch: Dispatch) => {

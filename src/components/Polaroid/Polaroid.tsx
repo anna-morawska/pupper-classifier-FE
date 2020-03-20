@@ -46,11 +46,14 @@ const Polaroid: FC = () => {
     <figure className={styles.polaroid}>
       <picture {...getRootProps({ className: styles.dropzone })}>
         <input {...getInputProps()} />
-        <img
-          alt="uploaded doggo"
+        <div
           className={styles.preview}
-          src={files[0] && files[0].preview ? files[0].preview : DoggoImage}
-        />
+          style={{
+            backgroundImage: `url(${
+              files[0] && files[0].preview ? files[0].preview : DoggoImage
+            })`
+          }}
+        ></div>
       </picture>
       <figcaption>
         Drag 'n' drop some files here, or click to select files
