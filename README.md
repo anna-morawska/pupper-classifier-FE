@@ -1,8 +1,10 @@
 # Pupper classifier
 
+![preview](https://github.com/anna-morawska/pupper-classifier-FE/blob/master/readme.jpg)
+
 The project consists of 3 parts:
 
-### 1. Google collab notebook - https://colab.research.google.com/drive/17Z7-E5G1sa_gZBzxF1JNZOsA05XIwelq
+### 1. Google colab notebook - https://colab.research.google.com/drive/17Z7-E5G1sa_gZBzxF1JNZOsA05XIwelq
 
 It's where the end-to-end multi-class image classifier is built. It uses TensorFlow 2.0 and TensorFlow Hub and Keras sequential API. The model was trained on a set of 10 000+ images from Kaggle's dog breed identification competition.
 
